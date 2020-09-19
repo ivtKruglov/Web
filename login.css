@@ -1,0 +1,101 @@
+html
+{
+	font-family: Tahoma, sans-serif;
+	background-color: rgb(100,149,237);
+}
+
+body
+{
+	margin: 0;
+}
+
+form
+{
+	background-color: rgb(42,48,63);
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	max-width: 700px;
+}
+
+h2
+{
+	color: rgb(221,221,221);
+	align-self: center;
+}
+
+label
+{
+	color: rgb(221,221,221);
+	padding-bottom: 5px;
+}
+
+input
+{
+	font-family: Tahoma, sans-serif;
+	padding: 5px;
+}
+
+button
+{
+	font-family: Tahoma, sans-serif;
+	background-color: rgb(221,221,221);
+	font-size: 14px;
+	margin: 10px;
+	padding: 10px 30px;
+	border: 0;
+	cursor: pointer;
+}
+
+button:hover
+{
+	background-color: rgb(100,149,237);
+	color: rgb(221,221,221);
+}
+
+a
+{
+	margin: 5px;
+	text-decoration: none;
+	color: rgb(100,149,237);
+}
+
+p
+{
+	align-self: center;
+	color: rgb(255, 0, 0);
+}
+
+.group
+{
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: column;
+}
+
+
+.login
+{
+	align-self: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: row;
+}
+
+.login label
+{
+	margin: 5px;
+}
+
+.buttons
+{
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+}

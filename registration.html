@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+	<form action="reg.php" method="post">
+		<?php
+		session_start();
+		if (!empty($_SESSION['msg']))
+		{
+			echo "<p class=error>".$_SESSION['msg']."</p>";
+			unset($_SESSION['msg']);
+		}
+		if (!empty($_SESSION['msg2']))
+		{
+			echo "<p class=error>".$_SESSION['msg2']."</p>";
+			unset($_SESSION['msg2']);
+		}
+		?>
+		<h2>
+			Регистрация
+		</h2>
+		<div class="group">
+			<label for="name">Имя</label>
+			<input id="name" name="name">
+		</div>
+		<div class="group">
+			<label for="name">E-Mail</label>
+			<input id="email" name="email">
+		</div>
+		<div class="group">
+			<label for="login">Логин</label>
+			<input id="login" name="login">
+		</div>
+		<div class="group">
+			<label for="passw">Пароль</label>
+			<input id="passw" name="passw">
+		</div>
+		<div class="group">
+			<label for="passw2">Повторите пароль</label>
+			<input id="passw2" name="passw2">
+		</div>
+		<div class="buttons">
+			<button>Регистрация</button>
+		</div>
+		<div class="login">
+			<label>Есть аккаунт?</label>
+			<a href="login.html">Вход</a>
+		</div>
+	</form>
+</body>
+</html>
