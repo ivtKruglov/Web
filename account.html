@@ -1,0 +1,120 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="account.css">
+</head>
+<body>
+	<div class="header">
+		<div class="logo">
+			<p>WeLoveBooks</p>
+		</div>
+		<div class="middle">
+			<div class="b2">
+				<a href="index.html">Главная</a>
+			</div>
+			<div class="b3">
+				<a href="lib.html">Библиотека</a>
+			</div>
+			<div class="b4">
+				<a href="support.html">Поддержка</a>
+			</div>
+		</div>
+		<div class="login">
+		<?php
+		// Если пользователь авторизован, то отобразить ссылку на аккаунт
+		if (empty($_SESSION['username']))
+		{
+			echo "<a href=login.html>Вход</a>";
+		}
+		else
+		{
+			echo "<a href=account.html>".$_SESSION['username']."</a>";
+			echo "<a href=logout.php>Выход</a>";
+		}
+		?>
+		</div>
+	</div>
+	<div class="content" id="content">
+	<?php
+	if (!empty($_SESSION['username']))
+	{
+		$db = mysqli_connect("localhost", "id15277221_student", "Fttx1100-778-239", "id15277221_webtest");
+		if ($db)
+		{
+		    $name = $_SESSION['username'];
+			$id = $_SESSION['id'];
+			$query = "SELECT login, email FROM users WHERE(id = '$id')";
+			$result = mysqli_query($db, $query);
+			$data = mysqli_fetch_row($result);
+			echo "<div class=info>";
+			echo "<div class=label>";
+			echo "<h2 align=center>Информация об аккаунте</h2>";
+			echo "</div>";
+			echo "<div class=alldata>";
+			echo "<div class=label>";
+			echo "<p>Ваше имя:</p>";
+			echo "<p>Ваш логин:</p>";
+			echo "<p>Ваша электронная почта:</p>";
+			echo "</div>";
+			echo "<div class=userdata>";
+			echo "<p>".$name."</p>";
+			echo "<p>".$data[0]."</p>";
+			echo "<div class=email>";
+			echo "<p>".$data[1]."</p>";
+			echo "<a href='nameform.html'>Изменить</a>";
+			echo "</div>";
+			echo "</div>";
+			echo "</div>";
+			echo "</div>";
+			echo "<h2 align=center>Ваши книги: </h2>";
+			$query = "SELECT title, bookcover FROM books
+			INNER JOIN purchases ON (purchases.id_user='$id')
+			WHERE id = purchases.id_book";
+			$result = mysqli_query($db, $query);
+			$data = mysqli_fetch_all($result);
+			$count = count($data);
+			if ($count > 0)
+			{
+			    echo "<div class=books>";
+				foreach ($data as $row)
+				{
+				    $image = base64_encode($row[1]);
+				    echo "<div class=book>";
+				    echo "<img src='data:image/png;base64,".$image."'width='120' height='170'/>";
+				    echo "<a href=#>".$row[0]."<a>";
+				    echo "</div>";
+				}
+				echo "</div>";
+			}
+			else
+			{
+			    echo "<p align=center style='margin:40px;'>У вас нет книг</p>";
+			}
+			echo "<div class=actions>";
+			echo "<a align=center href='pswform.html'>Сменить пароль</a>";
+			echo "<a align=center href='#' onclick=openconfirm()>Удалить аккаунт</a>";
+			echo "</div>";
+		}
+		else
+		{
+		    echo "<p align=center style='margin=20px'>Не удалось соединиться с сервером</p>";
+		}
+	}
+	else
+	{
+		echo "<div class=info>";
+		echo "<p align=center>Вы не вошли в аккаунт</p>";
+		echo "</div>";
+	}
+	?>
+	</div>
+	<div class="rights">
+		<p>© 2020 WeLoveBooks. Все права защищены.</p>
+	</div>
+	<script src="confirm.js"></script>
+</body>
+</html>

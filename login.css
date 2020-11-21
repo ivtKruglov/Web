@@ -1,7 +1,7 @@
 html
 {
 	font-family: Tahoma, sans-serif;
-	background-color: rgb(100,149,237);
+	background: url(img/bimg.jpg);
 }
 
 body
@@ -11,7 +11,8 @@ body
 
 form
 {
-	background-color: rgb(42,48,63);
+	background-color: rgb(34,14,13);
+	opacity: .9;
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
@@ -52,15 +53,15 @@ button
 
 button:hover
 {
-	background-color: rgb(100,149,237);
-	color: rgb(221,221,221);
+	background-color: rgb(201,148,82);
+	color: rgb(34,14,13);
 }
 
 a
 {
 	margin: 5px;
 	text-decoration: none;
-	color: rgb(100,149,237);
+	color: rgb(201,148,82);
 }
 
 p
@@ -88,6 +89,13 @@ p
 	flex-direction: row;
 }
 
+.toback
+{
+	align-self: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
 .login label
 {
 	margin: 5px;
@@ -98,4 +106,14 @@ p
 	margin: auto;
 	display: flex;
 	flex-direction: column;
+}
+
+.error
+{
+    color: rgb(221,221,221);
+    padding: 10px;
+    border: solid 1px rgb(255,69,70);
+    border-radius: 10px;
+    align-self: center;
+    max-width: 500px;
 }

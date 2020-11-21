@@ -2,7 +2,7 @@ let slides = document.getElementById('slides');
 let slideshow = document.getElementById('slideshow-container');
 let prev = document.getElementById('left');
 let next = document.getElementById('right');
-let parent = document.getElementById('content');
+let cont = document.getElementById('content');
 let listitems = slides.querySelectorAll('div');
 let width = slides.getBoundingClientRect().width;
 let elwidth = listitems[0].getBoundingClientRect().width;
@@ -12,17 +12,17 @@ let end_pos = 0;
 let step = elwidth + elmargin*2;
 let index = 0;
 
-if (parent.clientWidth % (elwidth + elmargin*2) != 0)
+if (cont.clientWidth % (elwidth + elmargin*2) != 0)
 {
-  let newwidth = parent.clientWidth - parent.clientWidth % (elwidth + elmargin*2);
+  let newwidth = cont.clientWidth - cont.clientWidth % (elwidth + elmargin*2);
   slideshow.style.width = newwidth + 'px';
 }
 
 window.addEventListener("resize", function()
 {
-  if (parent.clientWidth % (elwidth + elmargin*2) != 0)
+  if (cont.clientWidth % (elwidth + elmargin*2) != 0)
   {
-    let newwidth = parent.clientWidth - parent.clientWidth % (elwidth + elmargin*2);
+    let newwidth = cont.clientWidth - cont.clientWidth % (elwidth + elmargin*2);
     slideshow.style.width = newwidth + 'px';
   }
 });
@@ -36,7 +36,10 @@ prev.addEventListener("click", function()
       function frame()
       {
         if (position == end_pos)
+        {
           clearInterval(time);
+          prev.disabled = false;
+        }
         else
         {
           position += 1;
@@ -56,7 +59,10 @@ next.addEventListener("click", function()
       function frame()
       {
         if (position == end_pos)
+        {
           clearInterval(time);
+          next.disabled = false;
+        }
         else
         {
           position -= 1;

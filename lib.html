@@ -1,0 +1,48 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="lib.css">
+</head>
+<body>
+	<div class="header">
+		<div class="logo">
+			<p>WeLoveBooks</p>
+		</div>
+		<div class="middle">
+			<div class="b2">
+				<a href="index.html">Главная</a>
+			</div>
+			<div class="b3">
+				<a href="lib.html">Библиотека</a>
+			</div>
+			<div class="b4">
+				<a href="support.html">Поддержка</a>
+			</div>
+		</div>
+		<div class="login">
+		<?php
+		// Если пользователь авторизован, то отобразить ссылку на аккаунт
+		if (empty($_SESSION['username']))
+		{
+			echo "<a href=login.html>Вход</a>";
+		}
+		else
+		{
+			echo "<a href=account.html>".$_SESSION['username']."</a>";
+			echo "<a href=logout.php>Выход</a>";
+		}
+		?>
+		</div>
+	</div>
+	<div class="content" id="content">
+		<?php include ("lib.php"); ?>
+	</div>
+	<div class="rights">
+		<p>© 2020 WeLoveBooks. Все права защищены.</p>
+	</div>
+</body>
+</html>

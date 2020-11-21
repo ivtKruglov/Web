@@ -1,0 +1,75 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="support.css">
+</head>
+<body>
+	<div class="header">
+		<div class="logo">
+			<p>WeLoveBooks</p>
+		</div>
+		<div class="middle">
+			<div class="b2">
+				<a href="index.html">Главная</a>
+			</div>
+			<div class="b3">
+				<a href="lib.html">Библиотека</a>
+			</div>
+			<div class="b4">
+				<a href="support.html">Поддержка</a>
+			</div>
+		</div>
+		<div class="login">
+		<?php
+		// Если пользователь авторизован, то отобразить ссылку на аккаунт
+		if (empty($_SESSION['username']))
+		{
+				echo "<a href=login.html>Вход</a>";
+		}
+		else
+		{
+				echo "<a href=account.html>".$_SESSION['username']."</a>";
+				echo "<a href=logout.php>Выход</a>";
+		}
+		?>
+		</div>
+	</div>
+	<div class="content" id="content">
+	    <?php
+	    if (!empty($_SESSION['msg']))
+	    {
+	        echo "<p id=result>".$_SESSION['msg']."</p>";
+		    unset($_SESSION['msg']);
+	    }
+	    ?>
+	    <p>Опишите вашу проблему, и мы вам ответим в ближайшее время, отправив письмо на указанную вами электронную почту.</p>
+	    <form action="support.php" name=search method=post>
+	        <textarea name=message id=message></textarea>
+	        <div class="send">
+		        <div class="email">
+		            <?php
+		            if (empty($_SESSION['username']))
+		            {
+		                echo "<p>Введите ваш e-mail</p>";
+		                echo "<input name=email id=email>";
+		            }
+		            else
+		            {
+		                $email = $_SESSION['usermail'];
+		                echo "<p>Ваш email: $email</p>";
+		            }
+		            ?>
+		        </div>
+		        <input type=submit name=button id=button value=Отправить>
+		    </div>
+		</form>
+	</div>
+	<div class="rights">
+		<p>© 2020 WeLoveBooks. Все права защищены.</p>
+	</div>
+</body>
+</html>

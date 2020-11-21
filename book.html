@@ -1,0 +1,178 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="book.css">
+</head>
+<body>
+	<div class="header">
+		<div class="logo">
+			<p>WeLoveBooks</p>
+		</div>
+		<div class="middle">
+			<div class="b2">
+				<a href="index.html">Главная</a>
+			</div>
+			<div class="b3">
+				<a href="lib.html">Библиотека</a>
+			</div>
+			<div class="b4">
+				<a href="support.html">Поддержка</a>
+			</div>
+	</div>
+	<div class="login">
+		<?php
+		// Если пользователь авторизован, то отобразить ссылку на аккаунт
+		if (empty($_SESSION['username']))
+		{
+			echo "<a href=login.html>Вход</a>";
+		}
+		else
+		{
+			echo "<a href=account.html>".$_SESSION['username']."</a>";
+			echo "<a href=logout.php>Выход</a>";
+		}
+		?>
+		</div>
+	</div>
+	<div class="content" id="content">
+		<?php
+		if (!empty($_SESSION['error']))
+	    {
+	        echo "<p id=result>".$_SESSION['error']."</p>";
+		    unset($_SESSION['error']);
+	    }
+		$db = mysqli_connect("localhost", "id15277221_student", "Fttx1100-778-239", "id15277221_webtest");
+		if ($db)
+		{
+		    if (isset($_GET['id']))
+		    {
+		        $id = htmlspecialchars($_GET['id']);
+		        unset($_GET['id']);
+		        $_SESSION['bookid'] = str_replace("'", "", $id);
+		        $query = "SELECT * FROM books WHERE id=".$id;
+		        $result = mysqli_query($db, $query);
+		        $book = mysqli_fetch_row($result);
+		        if (isset($book))
+		        {
+		            $image = base64_encode($book[7]);
+		            echo "<div class=book>";
+		            echo "<div class=cover>";
+		            echo "<img src='data:image/png;base64,".$image."'width='217' height='340'/>";
+		            if (isset($_SESSION['id']))
+		            {
+		                $user_id = $_SESSION['id'];
+		                $query = "SELECT * FROM purchases WHERE id_book=".$id." AND id_user=".$user_id;
+		                $result = mysqli_query($db, $query);
+		                $purses = mysqli_fetch_row($result);
+		                if (isset($purses))
+		                {
+		                    echo "<a href=books/book.txt align=center>Читать</a>";
+		                }
+		                else
+		                {
+		                    $buy_id = $id;
+		                    echo "<a href=buy.php?buy_id='$buy_id' align=center>Купить</a>";
+		                }
+		            }
+		            else
+		            {
+		                $_SESSION['error'] = "Чтобы приобрести книгу, вам необходимо пройти авторизацию";
+		                echo "<p id=result>".$_SESSION['error']."</p>";
+		                unset($_SESSION['error']);
+		            }
+		            echo "</div>";
+		            echo "<div class=description>";
+		            echo "<div class=row>";
+		            echo "<p>Название: </p>";
+		            echo "<p>".$book[1]."</p>";
+		            echo "</div>";
+		            echo "<div class=row>";
+		            echo "<p>Автор: </p>";
+		            echo "<p>".$book[3]."</p>";
+		            echo "</div>";
+		            echo "<div class=row>";
+		            echo "<p>Страна: </p>";
+		            echo "<p>".$book[4]."</p>";
+		            echo "</div>";
+		            echo "<div class=row>";
+		            echo "<p>Жанр: </p>";
+		            echo "<p>".$book[2]."</p>";
+		            echo "</div>";
+		            echo "<div class=row>";
+		            echo "<p>Год: </p>";
+		            echo "<p>".$book[5]."</p>";
+		            echo "</div>";
+		            echo "</div>";
+		            echo "</div>";
+		            echo "<div class=comments>";
+		            echo "<div class=label><p>Комментарии:</p></div>";
+		            $query = "SELECT * FROM comments WHERE book_id=".$id;
+		            $result = mysqli_query($db, $query);
+		            $comments = mysqli_fetch_all($result);
+		            if (count($comments) == 0)
+		            {
+		                echo "<p align=center>Нет комментариев</p>";
+		            }
+		            else
+		            {
+		                foreach($comments as $comment)
+		                {
+		                    echo "<div class=block><div class=info><p>".$comment[2]."</p>";
+		                    echo "<p>".$comment[1]."</p></div>";
+		                    echo "<p>".$comment[3]."</p></div>";
+		                }
+		            }
+		            echo "</div>";
+		            if (empty($_SESSION['username']))
+		            {
+		                echo "<p align=center>Войдите в аккаунт, чтобы добавлять комментарии</p>";
+		            }
+		            else
+		            {
+		                $name = $_SESSION['username'];
+		                echo "<p>Добавить комментарий</p>";
+		                echo "<form action=sendcomment.php name=send method=post>";
+		                echo "<textarea name=text id=text></textarea>";
+		                echo "<div class=send>";
+		                echo "<div class=name>";
+		                echo "<p>Ваше имя: $name</p>";
+		                echo "</div>";
+		                echo "<input type=submit class=button value=Отправить>";
+		                echo "</div>";
+		                echo "</form>";
+		            }
+		        }
+		        else
+		        {
+		            echo "<p align=center>Книга не найдена</p>";
+		        }
+		    }
+		    else if (isset($_GET['buy_id']))
+		    {
+		        $user_id = $_SESSION['id'];
+		        $book_id = htmlspecialchars($_GET['buy_id']);
+		        $book_id = str_replace("'", "", $book_id);
+		        unset($_GET['buy_id']);
+		        $query = "INSERT INTO purchases (id_book, id_user) VALUES ('$book_id', '$user_id')";
+		        mysqli_query($db, $query);
+		    }
+		    else
+		    {
+		        echo "<p align=center>Страница не найдена</p>";
+		    }
+		}
+		else
+		{
+		    echo "<p align=center>Не удалось соединиться с сервером</p>";
+		}
+		?>
+	</div>
+	<div class="rights">
+		<p>© 2020 WeLoveBooks. Все права защищены.</p>
+	</div>
+</body>
+</html>

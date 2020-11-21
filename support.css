@@ -33,6 +33,8 @@ body
 
 .content
 {
+    display: flex;
+    flex-direction: column;
 	background-color: rgb(34,14,13);
 	opacity: .9;
 	margin: auto;
@@ -44,65 +46,11 @@ body
 	flex-grow: 1;
 }
 
-#content .slideshow-container
+.content p
 {
-	overflow: hidden;
-}
-
-#slides
-{
-	display: flex;
-	flex-direction: row;
-}
-
-.content .rec
-{
-	display: flex;
-	justify-content: space-between;
-	flex-direction: row;
-}
-
-#arrows
-{
-	margin: 10px;
-	opacity: .9;
-}
-
-#arrows a
-{
-	margin: 10px;
-	font-size: 21px;
-}
-
-#arrows a:hover
-{
-	color: rgb(201,148,82);
-	transition: all 500ms ease; 
-}
-
-.book
-{
-	display: flex;
-	flex-direction: column;
-	margin: 10px;
-	margin-bottom: 30px;
-}
-
-.book a
-{
-    max-width: 120px;
-}
-
-.book a:hover
-{
-	color: rgb(201,148,82);
-	transition: all 250ms ease; 
-}
-
-.cties
-{
-	display: flex;
-	flex-wrap: wrap;
+    margin: 20px;
+    margin-bottom: 10px;
+    padding: 0px;
 }
 
 a
@@ -121,6 +69,80 @@ h2
 {
 	color: rgb(221,221,221);
 	margin: 10px;
+}
+
+form
+{
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    margin-bottom: 25px;
+}
+
+.send
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 900px;
+    height: 30px;
+    margin: 20px;
+    margin-top: 0px;
+}
+
+.send p
+{
+    padding: 0px;
+    margin: 0px;
+    margin-right: 10px;
+}
+
+.email
+{
+    display: flex;
+    flex-direction: row;
+}
+
+#email
+{
+    background-color: rgb(34,14,13);
+    color: rgb(221,221,221);
+    border: solid 1px rgb(221,221,221);
+    width: 500px;
+}
+
+#button
+{
+    height: 17px;
+    background-color: rgb(34,14,13);
+    color: rgb(221,221,221);
+    cursor: pointer;
+    border: 0;
+}
+
+#button:hover
+{
+	color: rgb(201,148,82);
+	transition: all 250ms ease;
+}
+
+#message
+{
+    background-color: rgb(34,14,13);
+    color: rgb(221,221,221);
+    margin: 20px;
+    border: solid 1px rgb(221,221,221);
+    height: 400px;
+    resize: none;
+}
+
+#result
+{
+    padding: 10px;
+    border: solid 1px rgb(255,69,70);
+    border-radius: 10px;
+    align-self: center;
+    max-width: 500px;
 }
 
 .logo

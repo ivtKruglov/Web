@@ -33,7 +33,8 @@ body
 
 .content
 {
-	background-color: rgb(34,14,13);
+	display: flex;
+	flex-direction: row;
 	opacity: .9;
 	margin: auto;
 	margin-top: 5px;
@@ -44,40 +45,10 @@ body
 	flex-grow: 1;
 }
 
-#content .slideshow-container
-{
-	overflow: hidden;
-}
-
-#slides
-{
-	display: flex;
-	flex-direction: row;
-}
-
-.content .rec
-{
-	display: flex;
-	justify-content: space-between;
-	flex-direction: row;
-}
-
-#arrows
-{
-	margin: 10px;
-	opacity: .9;
-}
-
-#arrows a
-{
-	margin: 10px;
-	font-size: 21px;
-}
-
-#arrows a:hover
+.content a:hover
 {
 	color: rgb(201,148,82);
-	transition: all 500ms ease; 
+	transition: all 250ms ease;
 }
 
 .book
@@ -90,16 +61,73 @@ body
 
 .book a
 {
-    max-width: 120px;
+    width: 120px;
 }
 
-.book a:hover
+.cts
+{
+	background-color: rgb(34,14,13);
+	padding: 20px;
+	margin-right: 5px;
+	display: flex;
+	flex-direction: column;
+}
+
+.cts a
+{
+    padding: 10px;
+}
+
+.cts h2
+{
+    margin: 10px;
+	margin-bottom: 30px;
+	color: rgb(221,221,221);
+}
+
+.lib
+{
+	background-color: rgb(34,14,13);
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+form
+{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+#search
+{
+    background-color: rgb(34,14,13);
+    color: rgb(221,221,221);
+    outline: none;
+    border: none;
+    border-bottom: solid 1px rgb(221,221,221);
+    margin-right: 5px;
+    width: 80%;
+    height: 25px;
+}
+
+#button
+{
+    background-color: rgb(34,14,13);
+    color: rgb(221,221,221);
+    cursor: pointer;
+    border: 0;
+}
+
+#button:hover
 {
 	color: rgb(201,148,82);
-	transition: all 250ms ease; 
+	transition: all 250ms ease;
 }
 
-.cties
+.books
 {
 	display: flex;
 	flex-wrap: wrap;
@@ -115,12 +143,6 @@ p
 {
 	color: rgb(221,221,221);
 	padding: 20px;
-}
-
-h2
-{
-	color: rgb(221,221,221);
-	margin: 10px;
 }
 
 .logo

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -7,7 +10,6 @@
 <body>
 	<form action="login.php" method="post">
 		<?php
-		session_start();
 		if (!empty($_SESSION['msg']))
 		{
 			echo "<p class=error>".$_SESSION['msg']."</p>";
@@ -23,7 +25,7 @@
 		</div>
 		<div class="group">
 			<label for="passw">Пароль</label>
-			<input id="passw" name="passw">
+			<input type=password id="passw" name="passw">
 		</div>
 		<div class="buttons">
 			<button>Вход</button>
@@ -31,6 +33,9 @@
 		<div class="login">
 			<label>Нет аккаунта?</label>
 			<a href="registration.html">Регистрация</a>
+		</div>
+		<div class="toback">
+		    <a href="index.html">На главную</a>
 		</div>
 	</form>
 </body>

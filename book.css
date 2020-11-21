@@ -1,0 +1,355 @@
+html
+{
+	font-family: Tahoma, sans-serif;
+	background: url(img/bimg.jpg);
+}
+
+body
+{
+	margin: 0;
+}
+
+.header
+{
+	background-color: rgb(34,14,13);
+	opacity: .9;
+	display: flex;
+	flex-direction: row;
+	margin: auto;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	width: 100%;
+	max-width: 1200px;
+	font-size: 18px;
+	justify-content: space-between;
+}
+
+.middle
+{
+	display: flex;
+	flex-direction: row;
+	margin: auto;
+}
+
+.content
+{
+    display: flex;
+    flex-direction: column;
+	background-color: rgb(34,14,13);
+	opacity: .9;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	width: 100%;
+	max-width: 1200px;
+	font-size: 14px;
+	flex-grow: 1;
+}
+
+.book
+{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+}
+
+.cover
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.cover a
+{
+    font-size: 16px;
+    padding: 10px;
+}
+
+.cover a:hover
+{
+    color: rgb(201,148,82);
+	transition: all 250ms ease;
+}
+
+.buy
+{
+    margin: 0px;
+    padding: 10px;
+}
+
+.buy .button
+{
+    font-size: 16px;
+    height: auto;
+}
+
+.description
+{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.description p
+{
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 20px;
+    margin-right: 30px;
+}
+
+.row
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.comments
+{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    border-top: solid 1px rgb(221,221,221);
+    border-bottom: solid 1px rgb(221,221,221);
+}
+
+.label
+{
+    align-self: center;
+}
+
+.comments p
+{
+    padding: 20px;
+}
+
+.block
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.block p
+{
+    padding: 15px;
+    margin: 0px;
+}
+
+.info
+{
+    display: flex;
+    flex-direction: row;
+    margin-right: 100px;
+}
+
+a
+{
+	color: rgb(221,221,221);
+	text-decoration: none;
+}
+
+p
+{
+	color: rgb(221,221,221);
+	padding: 20px;
+}
+
+h2
+{
+	color: rgb(221,221,221);
+	margin: 10px;
+}
+
+form
+{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+    margin-right: 300px;
+}
+
+.send
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 30px;
+    margin: 20px;
+    margin-top: 0px;
+}
+
+.send p
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+.button
+{
+    height: 17px;
+    background-color: rgb(34,14,13);
+    color: rgb(221,221,221);
+    cursor: pointer;
+    border: 0;
+}
+
+.button:hover
+{
+	color: rgb(201,148,82);
+	transition: all 250ms ease;
+}
+
+#result
+{
+    padding: 10px;
+    border: solid 1px rgb(255,69,70);
+    border-radius: 10px;
+    align-self: center;
+    max-width: 500px;
+}
+
+#text
+{
+    background-color: rgb(34,14,13);
+    color: rgb(221,221,221);
+    margin: 20px;
+    border: solid 1px rgb(221,221,221);
+    height: 125px;
+    resize: none;
+}
+
+#result
+{
+    padding: 10px;
+    border: solid 1px rgb(255,69,70);
+    border-radius: 10px;
+    align-self: center;
+    max-width: 500px;
+}
+
+.logo
+{
+	background-color: rgb(221,221,221);
+	font-family: Monotype Corsiva, cursive;
+	align-self: center;
+	padding-left: 40px;
+	padding-right: 40px;
+	margin: 10px;
+}
+
+.logo p
+{
+	color: rgb(34,14,13);
+	padding: 0;
+}
+
+.b2
+{
+	align-self: center;
+	margin: 20px;
+}
+
+.b2 a
+{
+	padding: 10px;
+}
+
+.b2 a:hover
+{
+	background-color: rgb(221,221,221);
+	color: rgb(34,14,13);
+}
+
+.b3
+{
+	align-self: center;	
+	margin: 20px;
+}
+
+.b3 a
+{
+	padding: 10px;
+}
+
+.b3 a:hover
+{
+	background-color: rgb(221,221,221);
+	color: rgb(34,14,13);
+}
+
+.b4
+{
+	align-self: center;
+	margin: 20px;
+}
+
+.b4 a
+{
+	padding: 10px;
+}
+
+.b4 a:hover
+{
+	background-color: rgb(221,221,221);
+	color: rgb(34,14,13);
+}
+
+.login
+{
+	align-self: center;	
+	margin: auto;
+}
+
+.login a
+{
+	padding: 10px;
+	margin-right: 10px;
+}
+
+.login a:hover
+{
+	background-color: rgb(221,221,221);
+	color: rgb(34,14,13);
+}
+
+.rights
+{
+	background-color: rgb(34,14,13);
+	opacity: .9;
+	text-align: center;
+	margin: auto;
+	margin-top: 5px;
+	margin-bottom: 10px;
+	width: 100%;
+	max-width: 1200px;
+}
+
+.rights p
+{
+	margin: 0;
+	padding: 20px;
+}
+
+@media all and (max-width: 930px)
+{
+	.header
+	{
+		flex-direction: column;
+	}
+
+	.middle
+	{
+		flex-direction: column;
+	}
+
+	.login
+	{
+		margin: 20px;
+	}
+
+	.user
+	{
+		margin: 20px;
+	}
+}

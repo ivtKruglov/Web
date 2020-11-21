@@ -8,7 +8,7 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="login.css">
 </head>
 <body>
-	<form action="reg.php" method="post">
+	<form action="newemail.php" method="post">
 		<?php
 		if (!empty($_SESSION['msg']))
 		{
@@ -22,34 +22,22 @@ session_start();
 		}
 		?>
 		<h2>
-			Регистрация
+			Смена электронной почты
 		</h2>
 		<div class="group">
-			<label for="name">Имя</label>
-			<input id="name" name="name">
+			<label for="old">Введите свой старый E-Mail</label>
+			<input id="old" name="oldemail">
 		</div>
 		<div class="group">
-			<label for="email">E-Mail</label>
-			<input id="email" name="email">
+			<label for="new">Введите свой новый E-Mail</label>
+			<input id="new" name="newemail">
 		</div>
 		<div class="group">
-			<label for="login">Логин</label>
-			<input id="login" name="login">
-		</div>
-		<div class="group">
-			<label for="passw">Пароль</label>
+			<label for="passw">Введите пароль от аккаунта</label>
 			<input type=password id="passw" name="passw">
 		</div>
-		<div class="group">
-			<label for="passw2">Повторите пароль</label>
-			<input type=password id="passw2" name="passw2">
-		</div>
 		<div class="buttons">
-			<button>Регистрация</button>
-		</div>
-		<div class="login">
-			<label>Есть аккаунт?</label>
-			<a href="login.html">Вход</a>
+			<button>Сменить E-Mail</button>
 		</div>
 		<div class="toback">
 		    <a href="index.html">На главную</a>

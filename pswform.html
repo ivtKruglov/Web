@@ -1,0 +1,47 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+	<form action="newpsw.php" method="post">
+		<?php
+		if (!empty($_SESSION['msg']))
+		{
+			echo "<p class=error>".$_SESSION['msg']."</p>";
+			unset($_SESSION['msg']);
+		}
+		if (!empty($_SESSION['msg2']))
+		{
+			echo "<p class=error>".$_SESSION['msg2']."</p>";
+			unset($_SESSION['msg2']);
+		}
+		?>
+		<h2>
+			Смена электронной почты
+		</h2>
+		<div class="group">
+			<label for="old">Введите свой старый пароль</label>
+			<input type=password id="old" name="oldpsw">
+		</div>
+		<div class="group">
+			<label for="new">Введите свой новый пароль</label>
+			<input type=password id="new" name="newpsw">
+		</div>
+		<div class="group">
+			<label for="nwe2">Повторите новый пароль</label>
+			<input type=password id="new2" name="newpsw2">
+		</div>
+		<div class="buttons">
+			<button>Сменить пароль</button>
+		</div>
+		<div class="toback">
+		    <a href="index.html">На главную</a>
+		</div>
+	</form>
+</body>
+</html>
